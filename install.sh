@@ -10,7 +10,7 @@ sudo apt-get install python3-pip
 printf "\nInstalling virtualenv\n"
 sudo pip3 install virtualenv
 
-printf "\ncd\n"
+printf "\nChanging Directory to home\n"
 cd
 
 printf "\nMaking Vigilant-Euphoria-Server directory\n"
