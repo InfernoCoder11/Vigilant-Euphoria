@@ -23,7 +23,7 @@ except ImportError:
     print ("PyQt5 is not installed. Install it ?(y/n)")
     ans = getch()
 
-    if ans == "y":
+    if ans == ("y" or "Y"):
         print ("\nInstalling PyQt5.....\n")
         sub.call ("sudo apt-get install python3-pyqt5".split())
     else:
