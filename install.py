@@ -12,14 +12,13 @@ def getch():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
-def ImportPyQt5():
-    import PyQt5
-
 print ("Checking if PyQt5 installed")
-Pyqt5Installed = False
+PyQt5Installed = False
 try:
-    ImportPyQt5()
-    Pyqt5Installed = True
+    from PyQt5.QtWidgets import (QLineEdit, QPushButton, QVBoxLayout, QApplication, QWidget, QLabel)
+    from PyQt5.QtCore import Qt
+
+    PyQt5Installed = True
     print ("PyQt5 installed")
 
 except ImportError:
@@ -30,7 +29,9 @@ except ImportError:
         print ("\nInstalling PyQt5.....\n")
         sub.call ("sudo apt-get install python3-pyqt5".split())
         try:
-            ImportPyQt5()
+            from PyQt5.QtWidgets import (QLineEdit, QPushButton, QVBoxLayout, QApplication, QWidget, QLabel)
+            from PyQt5.QtCore import Qt
+            PyQt5Installed = True
             print ("\nPyQt5 successfully installed\n")
         
         except ImportError:
@@ -39,3 +40,25 @@ except ImportError:
     else:
         print ("Exiting...")
         sys.exit(1)
+
+class Window (QWidget):
+	def __init__(self):
+		super().__init__()
+
+		self.init_ui()
+
+	def init_ui (self):
+		self.WelcomeLabel = QLabel ("Welcome!")
+
+		self.VBox = QVBoxLayout()
+
+		self.VBox.addWidget (self.WelcomeLabel)
+
+		self.setLayout(self.VBox)
+		self.setWindowTitle("Vigiliant Euphoria")
+
+		self.show()
+
+app = QApplication(sys.argv)
+a_window = Window()
+sys.exit(app.exec_())
