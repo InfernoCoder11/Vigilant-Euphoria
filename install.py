@@ -1,6 +1,7 @@
 import subprocess as sub
 import sys, tty
 import termios
+import time
 
 def getch():
     fd = sys.stdin.fileno()
@@ -54,10 +55,16 @@ class Window (QWidget):
 
 		self.VBox.addWidget (self.WelcomeLabel)
 
+		self.setGeometry (300, 200, 300, 200)
+
 		self.setLayout(self.VBox)
 		self.setWindowTitle("Vigiliant Euphoria")
 
 		self.show()
+
+	def ClearLayout (self, layout):
+        	for i in reversed(range(layout.count())):
+    	    		layout.itemAt(i).widget().setParent(None)
 
 app = QApplication(sys.argv)
 a_window = Window()
