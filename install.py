@@ -12,10 +12,13 @@ def getch():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
+def ImportPyQt5():
+    import PyQt5
+
 print ("Checking if PyQt5 installed")
 Pyqt5Installed = False
 try:
-    import PyQt5
+    ImportPyQt5()
     Pyqt5Installed = True
     print ("PyQt5 installed")
 
@@ -26,6 +29,13 @@ except ImportError:
     if ans == ("y" or "Y"):
         print ("\nInstalling PyQt5.....\n")
         sub.call ("sudo apt-get install python3-pyqt5".split())
+        try:
+            ImportPyQt5()
+            print ("\nPyQt5 successfully installed\n")
+        
+        except ImportError:
+            print ("There was an error installing PyQt5. Try again later.")
+            sys.exit(1)
     else:
         print ("Exiting...")
-        sys.exit()
+        sys.exit(1)
