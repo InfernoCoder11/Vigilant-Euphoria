@@ -15,25 +15,25 @@ def getch():
 
 InstallpyDir = os.path.dirname(os.path.realpath(__file__))
 
-print ("Running sudo apt-get update")
+print ("Running sudo apt-get update\n")
 sub.call ("sudo apt-get update".split())
 
-print ("Running sudo apt-get upgrade")
+print ("\nRunning sudo apt-get upgrade\n")
 sub.call ("sudo apt-get upgrade".split())
 
-print ("Installing pip")
+print ("\nInstalling pip\n")
 sub.call ("sudo apt-get install python3-pip".split())
 
 print ("\nInstalling virtualenv\n")
 sub.call("sudo pip3 install virtualenv".split())
 
 print ("\nChanging Directory to /opt\n")
-sub.call("cd $HOME".split())
+sub.call("cd /opt".split())
 
 print ("\nMaking Vigilant-Euphoria-Server directory\n")
 sub.call("mkdir Vigilant-Euphoria-Server".split())
 
-print ("\nChanging dir to Vigilant-Euphoria-Server\n")
+print ("\nChanging Directory to Vigilant-Euphoria-Server\n")
 sub.call("cd Vigilant-Euphoria-Server".split())
 
 print ("\nCreating virtual environment\n")
