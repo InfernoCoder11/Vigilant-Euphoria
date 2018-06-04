@@ -31,17 +31,17 @@ print ("\nChanging Directory to /opt\n")
 os.chdir(os.path.abspath('/opt'))
 
 print ("\nMaking Vigilant-Euphoria-Server directory\n")
-sub.call("mkdir Vigilant-Euphoria-Server".split())
+sub.call("sudo mkdir Vigilant-Euphoria-Server".split())
 
 print ("\nChanging Directory to Vigilant-Euphoria-Server\n")
 os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server'))
 
 print ("\nCreating virtual environment\n")
-sub.call ("virtualenv flask-env".split())
+sub.call ("sudo virtualenv flask-env".split())
 
 print ("\nActivating virtual environment\n")
-sub.call ("source flask-env/bin/activate".split())
+sub.call ("sudo source flask-env/bin/activate".split())
 
 print ("\nInstalling flask\n")
-sub.call ("pip install Flask".split())
+sub.call ("sudo pip install Flask".split())
 
