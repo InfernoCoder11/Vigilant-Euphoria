@@ -27,7 +27,7 @@ sub.call ("sudo apt-get install python3-pip".split())
 print ("\nInstalling virtualenv\n")
 sub.call("sudo pip3 install virtualenv".split())
 
-print ("\nChanging Directory to home\n")
+print ("\nChanging Directory to /opt\n")
 sub.call("cd $HOME".split())
 
 print ("\nMaking Vigilant-Euphoria-Server directory\n")
