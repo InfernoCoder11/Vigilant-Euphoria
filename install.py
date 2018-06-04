@@ -13,7 +13,7 @@ def getch():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
-InstallpyDir = os.path.dirname(os.path.realpath(__file__))
+InstallFileDir = os.path.dirname(os.path.realpath(__file__))
 
 print ("Running sudo apt-get update\n")
 sub.call ("sudo apt-get update".split())
@@ -45,3 +45,5 @@ sub.call ("sudo source flask-env/bin/activate".split())
 print ("\nInstalling flask\n")
 sub.call ("sudo pip install Flask".split())
 
+print ("Copying __init__.py")
+sub.call ("sudo cp {}/Files/__init__.py .".format(InstallFileDir).split())
