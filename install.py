@@ -28,13 +28,13 @@ print ("\nInstalling virtualenv\n")
 sub.call("sudo pip3 install virtualenv".split())
 
 print ("\nChanging Directory to /opt\n")
-sub.call("cd /opt".split())
+os.chdir(os.path.abspath('/opt'))
 
 print ("\nMaking Vigilant-Euphoria-Server directory\n")
 sub.call("mkdir Vigilant-Euphoria-Server".split())
 
 print ("\nChanging Directory to Vigilant-Euphoria-Server\n")
-sub.call("cd Vigilant-Euphoria-Server".split())
+os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server'))
 
 print ("\nCreating virtual environment\n")
 sub.call ("virtualenv flask-env".split())
