@@ -55,4 +55,4 @@ print ("\nChanging directory to templates\n")
 os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server/templates'))
 
 print ("\nCopying main.html\n")
-sub.call ("sudo cp {}/Files/main.html .".format(InstallFileDir).split()")
+sub.call ("sudo cp {}/Files/main.html .".format(InstallFileDir).split())
