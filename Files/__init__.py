@@ -7,10 +7,10 @@ app = Flask(__name__)
 def main():
 	return render_template("main.html")
 
-@app.route("/handle_data", methods = ["POST"])
+@app.route("/handle_data", methods = ["GET", "POST"])
 def handle_data():
-	heading = request.form["heading"]
-	message = request.form["message"]
+	heading = request.args.get("heading")
+	message = request.args.get("message")
 	sub.call (["notify-send", heading, message])
 	return render_template("main.html")
 
