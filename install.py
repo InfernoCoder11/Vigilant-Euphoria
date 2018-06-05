@@ -45,5 +45,14 @@ sub.call ("sudo source flask-env/bin/activate".split())
 print ("\nInstalling flask\n")
 sub.call ("sudo pip install Flask".split())
 
-print ("Copying __init__.py")
+print ("\nCopying __init__.py\n")
 sub.call ("sudo cp {}/Files/__init__.py .".format(InstallFileDir).split())
+
+print ("\nMaking templates directory\n")
+sub.call ("sudo mkdir templates".split())
+
+print ("\nChanging directory to templates\n")
+os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server/templates'))
+
+print ("\nCopying main.html\n")
+sub.call ("sudo cp {}/Files/main.html .".format(InstallFileDir).split()")
