@@ -2,6 +2,7 @@ import subprocess as sub
 import sys, tty
 import termios
 import os
+import getpass
 
 def getch():
     fd = sys.stdin.fileno()
@@ -14,6 +15,7 @@ def getch():
     return ch
 
 InstallFileDir = os.path.dirname(os.path.realpath(__file__))
+CurrentUser = getpass.getuser()
 
 print ("Running sudo apt-get update\n")
 sub.call ("sudo apt-get update".split())
@@ -39,12 +41,6 @@ os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server'))
 print ("\nCreating virtual environment\n")
 sub.call ("sudo virtualenv flask-env".split())
 
-print ("\nActivating virtual environment\n")
-sub.call ("sudo source flask-env/bin/activate".split())
-
-print ("\nInstalling flask\n")
-sub.call ("sudo pip install Flask".split())
-
 print ("\nCopying __init__.py\n")
 sub.call ("sudo cp {}/Files/__init__.py .".format(InstallFileDir).split())
 
@@ -56,3 +52,18 @@ os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server/templates'))
 
 print ("\nCopying main.html\n")
 sub.call ("sudo cp {}/Files/main.html .".format(InstallFileDir).split())
+
+print ("\nChanging to parent directory\n")
+os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server/'))
+
+print ("\nMaking flask-install.sh executable\n")
+sub.call ("chmod +x {}/Files/flask-install.sh".format(InstallFileDir).split())
+
+print ("\nCopying flask-install.sh\n")
+sub.call ("sudo cp {}/Files/flask-install.sh .".format(InstallFileDir).split())
+
+print ("\nMaking {} the owner of Vigilant-Euphoria-Server\n".format (CurrentUser))
+sub.call ("sudo chown -R {}:{} /opt/Vigilant-Euphoria-Server".format(CurrentUser, CurrentUser).split())
+
+print ("\nInstalling flask in virtual environment\n")
+sub.call ("./flask-install.sh".split())
