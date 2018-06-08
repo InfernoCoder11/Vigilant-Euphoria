@@ -7,56 +7,56 @@ import getpass
 InstallFileDir = os.path.dirname(os.path.realpath(__file__))
 CurrentUser = getpass.getuser()
 
-print ("Running sudo apt-get update\n")
+print ("  Running sudo apt-get update\n")
 sub.call ("sudo apt-get update".split())
 
-print ("\nRunning sudo apt-get upgrade\n")
+print ("\n  Running sudo apt-get upgrade\n")
 sub.call ("sudo apt-get upgrade".split())
 
-print ("\nInstalling notify-osd for notifications\n")
+print ("\n  Installing notify-osd for notifications\n")
 sub.call ("sudo apt-get install notify-osd".split())
 
-print ("\nInstalling pip\n")
+print ("\n  Installing pip\n")
 sub.call ("sudo apt-get install python3-pip".split())
 
-print ("\nInstalling virtualenv\n")
+print ("\n  Installing virtualenv\n")
 sub.call("sudo pip3 install virtualenv".split())
 
-print ("\nChanging Directory to /opt\n")
+print ("\n  Changing Directory to /opt\n")
 os.chdir(os.path.abspath('/opt'))
 
-print ("\nMaking Vigilant-Euphoria-Server directory\n")
+print ("\n  Making Vigilant-Euphoria-Server directory\n")
 sub.call("sudo mkdir Vigilant-Euphoria-Server".split())
 
-print ("\nChanging Directory to Vigilant-Euphoria-Server\n")
+print ("\n  Changing Directory to Vigilant-Euphoria-Server\n")
 os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server'))
 
-print ("\nCreating virtual environment\n")
+print ("\n  Creating virtual environment\n")
 sub.call ("sudo virtualenv flask-env".split())
 
-print ("\nCopying __init__.py\n")
+print ("\n  Copying __init__.py\n")
 sub.call ("sudo cp {}/Files/__init__.py .".format(InstallFileDir).split())
 
-print ("\nMaking templates directory\n")
+print ("\n  Making templates directory\n")
 sub.call ("sudo mkdir templates".split())
 
-print ("\nChanging directory to templates\n")
+print ("\n  Changing directory to templates\n")
 os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server/templates'))
 
-print ("\nCopying main.html\n")
+print ("\n  Copying main.html\n")
 sub.call ("sudo cp {}/Files/main.html .".format(InstallFileDir).split())
 
-print ("\nChanging to parent directory\n")
+print ("\n  Changing to parent directory\n")
 os.chdir(os.path.abspath('/opt/Vigilant-Euphoria-Server/'))
 
-print ("\nMaking flask-install.sh executable\n")
+print ("\n  Making flask-install.sh executable\n")
 sub.call ("chmod +x {}/Files/flask-install.sh".format(InstallFileDir).split())
 
-print ("\nCopying flask-install.sh\n")
+print ("\n  Copying flask-install.sh\n")
 sub.call ("sudo cp {}/Files/flask-install.sh .".format(InstallFileDir).split())
 
-print ("\nMaking {} the owner of Vigilant-Euphoria-Server\n".format (CurrentUser))
+print ("\n  Making {} the owner of Vigilant-Euphoria-Server\n".format (CurrentUser))
 sub.call ("sudo chown -R {}:{} /opt/Vigilant-Euphoria-Server".format(CurrentUser, CurrentUser).split())
 
-print ("\nInstalling flask in virtual environment\n")
+print ("\n  Installing flask in virtual environment\n")
 sub.call ("./flask-install.sh".split())
