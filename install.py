@@ -13,6 +13,9 @@ sub.call ("sudo apt-get update".split())
 print ("\nRunning sudo apt-get upgrade\n")
 sub.call ("sudo apt-get upgrade".split())
 
+print ("\nInstalling notify-osd for notifications\n")
+sub.call ("sudo apt-get install notify-osd".split())
+
 print ("\nInstalling pip\n")
 sub.call ("sudo apt-get install python3-pip".split())
 
